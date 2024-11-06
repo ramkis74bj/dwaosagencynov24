@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outsoursing Agency Details</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+
+
+
+        h3 {
+            text-align: center;
+            padding: 10px;
+            font-size: 30px;
+        }
+
+
+
+        .container {
+
+            width: 100%;
+            height: 100vh;
+            background-color: whitesmoke;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+
+        form {
+
+            background: white;
+            width: 90%;
+
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+            border-radius: 10px;
+
+        }
+
+
+        form input,
+        select,
+        textarea,
+        .div_radio {
+
+            padding: 10px;
+            margin: 5px;
+            background: rgb(243, 240, 240);
+            outline: none;
+
+        }
+
+        form button {
+
+            padding: 15px;
+            color: white;
+            background: green;
+            outline: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+
+            margin: 5px;
+        }
+
+        .reset {
+
+            background: red;
+
+        }
+
+        .div_radio {
+            margin: 5px;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <form autocomplete="off" method="post" name="google-sheet">
+            <h3>Outsourcing Agency Details</h3>
+            <select name="pao">
+                <option value="Not Selected">Select PAO</option>
+                <option value="APAO-ADILABAD">APAO-ADILABAD</option>
+                <option value="APAO-BHOOPALAPALLY">APAO-BHOOPALAPALLY</option>
+                <option value="APAO-GADWAL">APAO-GADWAL</option>
+                <option value="PAO-HANMAKONDA">PAO-HANMAKONDA</option>
+                <option value="PAO-HYDERABAD">PAO-HYDERABAD</option>
+                <input type="text" placeholder="Department Name" required name="NameOfDept">
+                <input type="text" placeholder="Head Of the Department" required name="NameOfHod">
+                <input type="text" placeholder="Head Of the Unit HOD" required name="NameOfUnitHod">
+                <input type="text" placeholder="Number of Persons" required name="NumberOfPersons">
+                <input type="text" placeholder="Agency Name" required name="AgencyName">
+                <input type="text" placeholder="Agency Engaged since" required name="EngagedSince">
+                <input type="text" placeholder="Name of the Owner" required name="NameOfOwner">
+                <input type="text" placeholder="Owners Telephone Number" required name="OwnerMobile">
+                <input type="text" placeholder="Agreement Made Upto Month/Year " required name="AgreementMadeUpto">
+
+
+
+
+
+                <button type="submit" name="submit">Submit</button>
+                <button type="reset" class="reset">Reset</button>
+        </form>
+
+    </div>
+
+</body>
+
+<script>
+
+
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyJ27H3HxmXKWZZUgHjLITkjzirt1e01LraRixugL49I1Y8EU2PaLvR70FAud2aLQvXxA/exec'
+    const form = document.forms['google-sheet']
+
+    form.addEventListener('submit', e => {
+        e.preventDefault()
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) }
+        )
+            .then(response => alert("Thank You ..!"))
+
+            .catch(error => console.error('Error!', error.message))
+
+    })
+
+</script>
+
+</html>
